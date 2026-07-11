@@ -1,9 +1,12 @@
 import './App.css'
+import Nav from './components/Nav'
+import Notepad from './notepad/Notepad'
 
 function App() {
   return (
     <>
-      <h1 className="title">Hello there</h1>;
+      <Nav />
+      <Notepad />
     </>
   )
 }
