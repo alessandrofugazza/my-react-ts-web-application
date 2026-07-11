@@ -1,12 +1,18 @@
 import './App.css'
+import { Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav'
-import Notepad from './notepad/Notepad'
+import Home from './pages/Home'
+import Notepad from './pages/Notepad'
 
 function App() {
   return (
     <>
       <Nav />
-      <Notepad />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/notepad" element={<Notepad />} />
+      </Routes>
     </>
   )
 }
