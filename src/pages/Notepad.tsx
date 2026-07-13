@@ -1,11 +1,7 @@
 import { useEffect, useState, type SubmitEvent } from 'react'
 import { supabase } from '../supabase'
-
-type Note = {
-  id: number
-  content: string
-  created_at: string
-}
+import NoteItem from '../components/NoteItem'
+import type { Note } from '../types/Note.ts'
 
 function Notepad() {
   const [notes, setNotes] = useState<Note[]>([])
@@ -43,7 +39,6 @@ function Notepad() {
 
     const trimmedContent = content.trim()
 
-    // STOP empty string or currently saving, don't submit
     if (!trimmedContent || saving) {
       return
     }
@@ -64,7 +59,7 @@ function Notepad() {
 
     setContent('')
     setSaving(false)
-    // IMPROVE This works, although it performs another database request. Later, you could improve it by returning the inserted note and adding it directly to the state.
+
     await getNotes()
   }
 
@@ -104,21 +99,7 @@ function Notepad() {
         ) : notes.length === 0 ? (
           <p>No notes found.</p>
         ) : (
-          notes.map((note) => (
-            <article key={note.id}>
-              <p>{note.content}</p>
-
-              <small>{new Date(note.created_at).toLocaleString()}</small>
-
-              <br />
-
-              <button type="button" onClick={() => void deleteNote(note.id)}>
-                Delete
-              </button>
-
-              <hr />
-            </article>
-          ))
+          notes.map((note) => <NoteItem key={note.id} note={note} onDelete={deleteNote} />)
         )}
       </div>
     </section>
