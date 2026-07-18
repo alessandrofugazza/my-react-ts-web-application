@@ -2,6 +2,7 @@ import { useEffect, useState, type SubmitEvent } from 'react'
 import { supabase } from '../supabase'
 import NoteItem from '../components/NoteItem'
 import type { Note } from '../types/Note.ts'
+import '../styles/Notepad.css'
 
 function Notepad() {
   const [notes, setNotes] = useState<Note[]>([])
@@ -81,7 +82,7 @@ function Notepad() {
     <section>
       <h1>Notepad</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form id="note-form" onSubmit={handleSubmit}>
         <label htmlFor="note-content">Note content</label>
 
         <textarea id="note-content" value={content} onChange={(event) => setContent(event.target.value)} required />
