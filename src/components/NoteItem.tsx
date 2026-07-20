@@ -5,7 +5,7 @@ type NoteItemProps = {
   onDelete: (id: number) => Promise<void>
 }
 
-function NoteItem({ note, onDelete }: NoteItemProps) {
+const NoteItem = ({ note, onDelete }: NoteItemProps) => {
   return (
     <article>
       <p>{note.content}</p>

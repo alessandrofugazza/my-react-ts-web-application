@@ -4,7 +4,7 @@ import NoteItem from '../components/NoteItem'
 import type { Note } from '../types/Note.ts'
 import '../styles/Notepad.css'
 
-function Notepad() {
+const Notepad = () => {
   const [notes, setNotes] = useState<Note[]>([])
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(true)
